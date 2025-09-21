@@ -75,7 +75,7 @@ const Sidebar = () => {
         onClick={() => {
           navigate('/community')
         }}
-        className='flex items-center gap-2 p-3 mt-auto border border-gray-300 dark:border-white/15 rounded-md cursor-pointer hover:scale-103 transition-all'
+        className='flex items-center gap-2 p-3 mt-38 border border-gray-300 dark:border-white/15 rounded-md cursor-pointer hover:scale-103 transition-all'
       >
         <img
           src={assets.gallery_icon}
@@ -86,6 +86,25 @@ const Sidebar = () => {
           <p>Community Images</p>
         </div>
       </div>
+
+       {/* Creadits purchases Option */}
+      <div
+        onClick={() => {
+          navigate('/community')
+        }}
+        className='flex items-center gap-2 p-3 mt-auto border border-gray-300 dark:border-white/15 rounded-md cursor-pointer hover:scale-103 transition-all'
+      >
+        <img
+          src={assets.diamond_icon}
+          className='w-4.5 dark:invert'
+          alt=""
+        />
+        <div className='flex flex-col text-sm'>
+          <p>Credits : {user?.credits}</p>
+          <p className='text-xs text-gray-400'>purchase credits to use quickgpt</p>
+        </div>
+      </div>
+
     </div>
   );
 };
