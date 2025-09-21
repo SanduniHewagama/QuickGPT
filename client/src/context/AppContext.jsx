@@ -16,25 +16,24 @@ export const AppContextProvider = ({ children }) => {
   };
 
   const fetchUsersChats = async () => {
-    setChats(dummyChats)
+    setChats(dummyChats);
     setSelectedChat(dummyChats[0]);
-  }
-  
+  };
+
   useEffect(() => {
-    if(theme === "dark") {
-        document.documentElement.classList.add("dark");
+    if (theme === "dark") {
+      document.documentElement.classList.add("dark");
     } else {
-        document.documentElement.classList.remove("dark");
+      document.documentElement.classList.remove("dark");
     }
   }, [theme]);
 
-
   useEffect(() => {
     if (user) {
-        fetchUsersChats();
+      fetchUsersChats();
     } else {
-        setChats([]);
-        setSelectedChat(null);
+      setChats([]);
+      setSelectedChat(null);
     }
   }, [user]);
 
