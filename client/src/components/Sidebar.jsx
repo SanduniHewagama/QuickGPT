@@ -2,6 +2,7 @@ import React from "react";
 import { useAppContext } from "../context/AppContext";
 import { assets } from "../assets/assets";
 import { useState } from "react";
+import moment from "moment/moment";
 
 const Sidebar = () => {
   const { chats, setSelectedChat, theme, setTheme, user } = useAppContext();
@@ -40,7 +41,7 @@ const Sidebar = () => {
                             {chat.messages.length > 0 ? chat.messages[0].content.slice(0,32) : chat.name}
 
                         </p>
-                        <p className='text-xs text-gray-500 dark:text-[#B1A6C0]'>{chat.updatedAt}</p>
+                        <p className='text-xs text-gray-500 dark:text-[#B1A6C0]'>{moment(chat.updatedAt).fromNow()}</p>
                         </div>
                         <img src={assets.bin_icon} className='hidden group-hover:block w-4 cursor-pointer not-dark:invert' alt="" />
 
