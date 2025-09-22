@@ -64,7 +64,7 @@ const ChatBox = () => {
         )}
 
         {mode === "image" && (
-          <label className="inline-flex items-center gap-2 mb-auto text-sm mx-32">
+          <label className="inline-flex items-center gap-2 mt-2 mb-auto text-sm mx-32">
             <p className="text-xs">Publish Generated Image to Community</p>
             <input
               type="checkbox"
