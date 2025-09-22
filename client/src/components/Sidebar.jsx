@@ -109,7 +109,7 @@ const Sidebar = () => {
           <img src={assets.theme_icon} className="w-4 not-dark:invert" alt="" />
           <p>Dark Mode</p>
         </div>
-        <label className='relative inline-flex cursor-pointer'>
+        <label className="relative inline-flex cursor-pointer">
           <input
             onChange={() => setTheme(theme === "dark" ? "light" : "dark")}
             type="checkbox"
@@ -122,18 +122,23 @@ const Sidebar = () => {
       </div>
 
       {/* User Account */}
-      <div
-        className='flex items-center gap-3 p-3 mt-auto border border-gray-300 dark:border-white/15 rounded-md cursor-pointer group'
-      >
-        <img
-          src={assets.user_icon}
-          className='w-7 rounded-full'
-          alt=""
-        />
-        <p className='flex-1 text-sm dark:text-primary truncate'>{user ? user.name : 'Login Your account'}</p>
-        {user && <img src={assets.logout_icon} className='h-5 cursor-pointer hidden not-dark:invert group-hover:block'/>}
+      <div className="flex items-center gap-3 p-3 mt-auto border border-gray-300 dark:border-white/15 rounded-md cursor-pointer group">
+        <img src={assets.user_icon} className="w-7 rounded-full" alt="" />
+        <p className="flex-1 text-sm dark:text-primary truncate">
+          {user ? user.name : "Login Your account"}
+        </p>
+        {user && (
+          <img
+            src={assets.logout_icon}
+            className="h-5 cursor-pointer hidden not-dark:invert group-hover:block"
+          />
+        )}
       </div>
-
+      <img
+        src={assets.close_icon}
+        className="absolute top-3 right-3 w-5 h-5 cursor-pointer md:hidden not-dark:invert"
+        alt=""
+      />
     </div>
   );
 };
