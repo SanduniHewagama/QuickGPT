@@ -7,6 +7,7 @@ import Community from "./pages/Community";
 import Loading from "./pages/Loading";
 import Sidebar from "./components/Sidebar";
 import { assets } from "./assets/assets";
+import './assets/prism.css'
 
 
 const App = () => {
