@@ -1,10 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState, useRef } from 'react';
 import { useAppContext } from "../context/AppContext";
 import { assets } from "../assets/assets";
-import { useState } from "react";
 import Message from "./Message";
 
 const ChatBox = () => {
+
+  const containerRef = useRef(null)
   const { selectedChat, theme } = useAppContext();
   const [messages, setMessages] = useState([]);
   // eslint-disable-next-line no-unused-vars
@@ -23,12 +24,21 @@ const ChatBox = () => {
     }
   }, [selectedChat]);
 
+  useEffect(()=> {
+    if(containerRef.current){
+       containerRef.current.scrollTo({
+        top: containerRef.current.scrollHeight,
+        behavior: "smooth",
+       }) 
+    }
+  },[messages])
+
   return (
     <div className="flex-1 flex flex-col justify-between md:m-10 xl:mx-30 max-md:mt-auto 2xl:pr-40">
       {/* Chat Messages */}
-      <div className="flex-1 mb-2 ">
+      <div ref={containerRef} className="flex-1 mb-2 ">
         {messages.length === 0 && (
-          <div className="h-full flex flex-col items-center justify-center gap-2 text-primary">
+          <div className='h-full flex flex-col items-center justify-center gap-2 text-primary'>
             <img
               src={theme === "dark" ? assets.logo_full : assets.logo_full_dark}
               alr=""
@@ -84,7 +94,7 @@ const ChatBox = () => {
           </option>
         </select>
         <input
-          onChange={() => setPrompt(e.target.value)}
+          onChange={(e) => setPrompt(e.target.value)}
           value={prompt}
           type="text"
           placeholder="Type your prompt here..."
