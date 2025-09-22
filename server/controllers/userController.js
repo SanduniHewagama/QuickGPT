@@ -1,9 +1,10 @@
 import User from "../models/User.js";
 import jwt from "jsonwebtoken";
+import bcrypt from "bcryptjs";
 
 //Generate JWT
 const generateToken = (id) => {
-  return JsonWebTokenError.sign({ id }, process.env.JWT_SECRET, {
+  return jwt.sign({ id }, process.env.JWT_SECRET, {
     expiresIn: "30d",
   });
 };
@@ -27,33 +28,30 @@ export const registerUser = async (req, res) => {
 };
 
 //api to login user
-export const loginUser = async (req, res) =>{
-    const { email, password } = req.body;
-    try{
-        const user = await User.findOne({email})
-        if(user){
-            const isMatch = await bcrypt.compare(password, user.password)
+export const loginUser = async (req, res) => {
+  const { email, password } = req.body;
+  try {
+    const user = await User.findOne({ email });
+    if (user) {
+      const isMatch = await bcrypt.compare(password, user.password);
 
-            if(isMatch){
-                const token = generateToken(user._id);
-                return res.json({success: true, token })
-            }
-
-
-        }
-        return res.json({success: false, message: "Invalid email or password"})
-    } catch (error) {
-        return res.json({success: false, message: error.message })
+      if (isMatch) {
+        const token = generateToken(user._id);
+        return res.json({ success: true, token });
+      }
     }
-    }
+    return res.json({ success: false, message: "Invalid email or password" });
+  } catch (error) {
+    return res.json({ success: false, message: error.message });
+  }
+};
 
-    //API to get user data
-    export const getUser = async (req, res) => {
-        try{
-            const user = req.user;
-            return res.json({success: true, user})
-
-        } catch (error) {
-            return res.json({success: false, message: error.message })
-        }
-    }
+//API to get user data
+export const getUser = async (req, res) => {
+  try {
+    const user = req.user;
+    return res.json({ success: true, user });
+  } catch (error) {
+    return res.json({ success: false, message: error.message });
+  }
+};
