@@ -4,8 +4,6 @@ import { assets } from "../assets/assets";
 import { useState } from "react";
 import Message from "./Message";
 
-
-
 const ChatBox = () => {
   const { selectedChat, theme } = useAppContext();
   const [messages, setMessages] = useState([]);
@@ -37,10 +35,20 @@ const ChatBox = () => {
         {messages.map((message, index) => (
           <Message key={index} message={message} />
         ))}
-      </div>
 
-      {/* Pompt Input BOx */}
-      <form></form>
+        {/* Three Dots Loading */}
+
+        {loading && (
+          <div className="loader flex item-center gap-1.5">
+            <div className="w-1.5 h-1.5 rounded-full bg-gray-500 dark:bg-white animate-bounce"></div>
+            <div className="w-1.5 h-1.5 rounded-full bg-gray-500 dark:bg-white animate-bounce"></div>
+            <div className="w-1.5 h-1.5 rounded-full bg-gray-500 dark:bg-white animate-bounce"></div>
+          </div>
+        )}
+
+        {/* Pompt Input BOx */}
+        <form></form>
+      </div>
     </div>
   );
 };
