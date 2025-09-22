@@ -10,6 +10,7 @@ const Loading = () => {
 
         },8000)
         return ()=> clearTimeout(timeout)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
 
   return (
