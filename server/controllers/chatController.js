@@ -1,3 +1,4 @@
+import Chat from "../models/Chat.js";
 
 export const createChat = async (req, res) => {
     try {
