@@ -6,7 +6,7 @@ import Message from "./Message";
 const ChatBox = () => {
 
   const containerRef = useRef(null)
-  const { selectedChat, theme } = useAppContext();
+  const { selectedChat, theme, user, axios, token, setUser } = useAppContext();
   const [messages, setMessages] = useState([]);
   // eslint-disable-next-line no-unused-vars
   const [loading, setLoading] = useState(false);
